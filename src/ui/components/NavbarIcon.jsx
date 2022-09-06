@@ -1,11 +1,9 @@
 import {NavLink, useLocation} from 'react-router-dom'
 import Ripples from 'react-ripples'
 
-export const IconNavbar = ({iconClass, text, link}) => {
+export const NavbarIcon = ({iconClass, text, link}) => {
 
     const {pathname} = useLocation()
-
-    
 
     return (
 

@@ -1,9 +1,9 @@
-import {Header} from '../components/Header'
+import {MainHeader} from '../../ui/components'
 
 export const SearchPage = () => {
     return (
-
-        <Header title='Search' />
-
+        <>
+            <MainHeader pageTitle='Search' />
+        </>
     )
 }

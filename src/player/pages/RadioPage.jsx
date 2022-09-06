@@ -1,7 +1,9 @@
-import {Header} from '../components/Header'
+import {MainHeader} from '../../ui/components'
 
 export const RadioPage = () => {
     return (
-        <Header title='Radio' />
+        <>
+            <MainHeader pageTitle='Radio' />
+        </>
     )
 }

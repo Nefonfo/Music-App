@@ -1,7 +1,9 @@
-import {Header} from '../components/Header'
+import {MainHeader} from '../../ui/components'
 
 export const CollectionPage = () => {
     return (
-        <Header title='Collection' />
+        <>
+            <MainHeader pageTitle='Collection' />
+        </>
     )
 }
