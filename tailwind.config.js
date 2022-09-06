@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      borderWidth: {
+        1: '1px'
+      },
       colors: {
         'cupertino-pink': {
           200: '#ff6483',
