@@ -11,7 +11,7 @@ export const IconNavbar = ({iconClass, text, link}) => {
 
             <NavLink
                 to={link}
-                className={({isActive}) => (`rounded grow flex flex-wrap font-medium text-sm cursor-pointer ${isActive ? 'text-cupertino-pink-400': 'text-cupertino-system-grey-200'}`)}
+                className={({isActive}) => (`rounded grow flex flex-wrap text-sm cursor-pointer ${isActive ? 'text-cupertino-pink-400': 'text-cupertino-system-grey-200'}`)}
             >
                 <Ripples
                     className='rounded-xl grow flex flex-col items-center justify-center py-2' color={(pathname === link) ? 'rgba(255, 100, 131, 0.5)' : 'rgba(174, 174, 178, 0.5)'}>
