@@ -1,13 +1,24 @@
-import {NavLink} from 'react-router-dom'
+import {NavLink, useLocation} from 'react-router-dom'
+import Ripples from 'react-ripples'
 
-export const IconNavbar = ({iconClass, text, link, selected}) => {
+export const IconNavbar = ({iconClass, text, link}) => {
+
+    const {pathname} = useLocation()
+
+    
+
     return (
-        <NavLink
-            to={link}
-            className={({isActive}) => (`flex flex-col items-center justify-center gap-1 font-medium text-sm cursor-pointer ${isActive ? 'text-cupertino-pink-400': 'text-cupertino-system-grey-200'}`)}
-        >
-            <div><i className={`${iconClass} fa-lg`}></i></div>
-            <p>{text}</p>
-        </NavLink>
+
+            <NavLink
+                to={link}
+                className={({isActive}) => (`rounded grow flex flex-wrap font-medium text-sm cursor-pointer ${isActive ? 'text-cupertino-pink-400': 'text-cupertino-system-grey-200'}`)}
+            >
+                <Ripples
+                    className='rounded-xl grow flex flex-col items-center justify-center py-2' color={(pathname === link) ? 'rgba(255, 100, 131, 0.5)' : 'rgba(174, 174, 178, 0.5)'}>
+                    <div><i className={`${iconClass} fa-lg`}></i></div>
+                    <p>{text}</p>
+                </Ripples>
+            </NavLink>
+
     )
 }

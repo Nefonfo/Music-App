@@ -4,7 +4,7 @@ import {IconNavbar} from './IconNavbar'
 export const Navbar = () => {
 
     return (
-        <nav className="w-full fixed bottom-0 flex flex-wrap justify-around items-center h-16 border-t-2 border-cupertino-system-grey-200">
+        <nav className="w-full fixed bottom-0 flex flex-wrap justify-around items-center border-t-2 border-cupertino-system-grey-200">
 
             <IconNavbar link='/' text='Listen' iconClass='fa-sharp fa-solid fa-circle-play' />
             <IconNavbar link='/explore' text='Explore' iconClass='fa-regular fa-window-restore' />
