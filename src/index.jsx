@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import reportWebVitals from './reportWebVitals'
 
-import {BrowserRouter} from 'react-router-dom'
+import {HashRouter} from 'react-router-dom'
 
 import {AppleMusicClone} from './AppleMusicClone'
 import './index.css'
@@ -11,9 +11,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'))
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <HashRouter>
         <AppleMusicClone />
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>
 )
 
