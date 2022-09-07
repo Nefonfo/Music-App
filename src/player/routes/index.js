@@ -1,1 +1,1 @@
-export * from './PlayerRouter';
+export * from './PlayerRoutes';

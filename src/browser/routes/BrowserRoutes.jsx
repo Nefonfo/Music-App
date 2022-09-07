@@ -2,7 +2,7 @@ import {Navigate, Route, Routes} from 'react-router-dom'
 import {CollectionPage, ExplorePage, ListenPage, RadioPage, SearchPage} from '../pages'
 import {ClassicLayout} from '../../ui/layout'
 
-export const PlayerRouter = () => {
+export const BrowserRoutes = () => {
     return (
         <ClassicLayout>
             <Routes>
