@@ -1,7 +1,6 @@
 import styled from 'styled-components'
-import {motion} from 'framer-motion'
 
-export const BackgroundPage = styled(motion.div)`
+export const BackgroundPage = styled.div`
   &:before {
     content: "";
     position: fixed;

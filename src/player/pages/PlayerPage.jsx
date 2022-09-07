@@ -1,25 +1,19 @@
-import {AnimatePresence, motion} from 'framer-motion'
 import {BackgroundPage} from '../components'
 
 export const PlayerPage = () => {
 
     return (
             <BackgroundPage
-                initial={{ y: 1000, opacity: 0 }}
-                animate={{ x: 0, y: 0, opacity: 1 }}
-                exit={{ y: -1000, opacity: 0 }}
-                transition={{ ease: 'easeInOut', duration: 0.60 }}
                 backgroundImage={`${process.env.PUBLIC_URL}/images/albums_images/ye.jpg`}
                 className='h-screen w-full flex flex-wrap flex-row justify-center items-stretch'
             >
                 <div className="w-10/12 flex flex-wrap items-center justify-center">
-                    <AnimatePresence>
-                        <motion.img
-                            key='playingImage'
-                            className='w-full max-w-xl rounded-md'
-                            src={`${process.env.PUBLIC_URL}/images/albums_images/ye.jpg`}
-                            alt="Ye"/>
-                    </AnimatePresence>
+                    <img
+                        key='playingImage'
+                        className='w-full max-w-xl rounded-md'
+                        src={`${process.env.PUBLIC_URL}/images/albums_images/ye.jpg`}
+                        alt="Ye"
+                    />
                 </div>
                 <div className='w-10/12 flex justify-center'>
                     <div className='grow md:max-w-xl flex flex-wrap flex-col'>

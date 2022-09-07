@@ -6,7 +6,6 @@ export const ClassicLayout = ({children}) => {
             <section className='flex flex-wrap'>
                 {children}
             </section>
-
             <Navbar />
         </main>
     )
