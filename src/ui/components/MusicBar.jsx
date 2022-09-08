@@ -1,10 +1,14 @@
 import {useNavigate} from 'react-router-dom'
 
 import {OutlineIconButton} from './OutlineIconButton'
+import {usePlayerStore} from '../../hooks/store/usePlayerStore'
 
 export const MusicBar = () => {
 
     const navigate = useNavigate()
+    const { playing, playMusic, nextMusic } = usePlayerStore()
+    const {play, song} = playing
+    const {name, explicit, image} = song
 
     return (
         <div
@@ -13,12 +17,12 @@ export const MusicBar = () => {
         >
             <img
                 className='w-12 rounded-md'
-                src={`${process.env.PUBLIC_URL}/images/albums_images/ye.jpg`}
+                src={image}
                 alt="Ye"
             />
-            <h3 className='grow px-2 truncate'>I Thought About Killing You</h3>
-            <OutlineIconButton iconClass='fa-solid fa-play' innerExtraClass='p-2' rippleColor='rgba(174, 174, 178, 0.5)' />
-            <OutlineIconButton iconClass='fa-solid fa-forward' innerExtraClass='p-2' rippleColor='rgba(174, 174, 178, 0.5)' />
+            <h3 className='grow px-2 truncate'>{name}{explicit && <i className="ml-2 fa-solid fa-exclamation-circle fa-lg"></i>}</h3>
+            <OutlineIconButton handleClick={playMusic} iconClass={`fa-solid ${!play ? 'fa-play': 'fa-pause'}`} innerExtraClass='p-2' rippleColor='rgba(174, 174, 178, 0.5)' />
+            <OutlineIconButton handleClick={nextMusic} iconClass='fa-solid fa-forward' innerExtraClass='p-2' rippleColor='rgba(174, 174, 178, 0.5)' />
         </div>
     )
 }

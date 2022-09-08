@@ -5,6 +5,8 @@ export const BackgroundPage = styled.div`
     content: "";
     position: fixed;
     z-index: -1;
+    -webkit-transition: background-image 0.5s ease-in-out;
+    transition: background-image 0.5s ease-in-out;
     background-image: url(${(props) => props.coverImage});
     background-position: center;
     background-size: cover;

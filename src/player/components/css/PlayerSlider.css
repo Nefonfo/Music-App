@@ -1,0 +1,40 @@
+/**
+* Rangeslider
+*/
+.rangeslider {
+    position: relative;
+    background: rgba(255, 255, 255, 0.45);
+    -ms-touch-action: none;
+    touch-action: none;
+}
+
+.rangeslider .rangeslider__handle {
+    background: #fff;
+    cursor: pointer;
+    position: absolute;
+}
+
+/**
+* Rangeslider - Horizontal slider
+*/
+.rangeslider-horizontal {
+    height: 3px;
+    border-radius: 10px;
+}
+.rangeslider-horizontal .rangeslider__fill {
+    height: 100%;
+    background-color: white;
+    border-radius: 10px;
+    top: 0;
+}
+.rangeslider-horizontal .rangeslider__handle {
+    width: 10px;
+    height: 10px;
+    border-radius: 30px;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+}
+
+.rangeslider-horizontal .rangeslider__handle-tooltip {
+    top: -55px;
+}
