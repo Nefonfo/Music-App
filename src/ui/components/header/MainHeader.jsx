@@ -12,8 +12,8 @@ export const MainHeader = ({pageTitle}) => {
                 title={pageTitle}
                 rightIcons={
                     <>
-                        <OutlineIconButton iconClass='fa-brands fa-chromecast' rippleColor={rippleColor} />
-                        <OutlineIconButton iconClass='fa-solid fa-ellipsis-vertical' rippleColor={rippleColor} />
+                        <OutlineIconButton iconClass='fa-brands fa-chromecast' iconSizeClass='fa-xl' rippleColor={rippleColor} />
+                        <OutlineIconButton iconClass='fa-solid fa-ellipsis-vertical' iconSizeClass='fa-xl' rippleColor={rippleColor} />
                     </>
                 }
             />
