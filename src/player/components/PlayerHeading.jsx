@@ -5,7 +5,7 @@ export const PlayerHeading = ({name, author, explicit = false}) => {
     return (
         <div className="w-full flex gap-x-5 py-2">
 
-            <div className='grow flex flex-col justify-center overflow-hidden text-md md:text-xl'>
+            <div className='grow flex flex-col justify-center overflow-hidden text-xl'>
                 <h1 className='text-white truncate flex gap-1 items-center'>
                     {name}
                     {explicit && <i className="fa-solid fa-exclamation-circle fa-sm text-white text-opacity-70"></i>}

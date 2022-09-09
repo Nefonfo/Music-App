@@ -16,7 +16,7 @@ export const PlayerControls = ({
 
     return (
         <div className="w-full flex flex-col gap-y-6 md:gap-y-10">
-            <div className="w-full flex justify-around items-center text-white text-4xl md:text-5xl">
+            <div className="w-full flex justify-around items-center text-white text-5xl">
                 <OutlineIconButton
                     handleClick={handleBackClick}
                     iconClass="fa-solid fa-backward"
@@ -33,7 +33,7 @@ export const PlayerControls = ({
                     rippleColor={rippleColor}
                 />
             </div>
-            <div className="w-full flex justify-around items-center text-white opacity-90 text-xl md:text-2xl">
+            <div className="w-full flex justify-around items-center text-white opacity-90 text-2xl">
                 <OutlineIconButton
                     handleClick={handleLyricsClick}
                     iconClass="fa-solid fa-message text-white opacity-40"
