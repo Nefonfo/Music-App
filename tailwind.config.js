@@ -2,13 +2,26 @@
 module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
+    "./public/index.html"
   ],
   theme: {
     extend: {
       borderWidth: {
-        1: '1px'
+        1: '0.1px'
       },
       colors: {
+        'cupertino-destructive-red': '#ff3b30',
+        'cupertino-basic-background': {
+          light: '#ffffff',
+          dark: '#000000',
+          darkalt: '#242426',
+          DEFAULT: '#ffffff'
+        },
+        'cupertino-basic-grey': {
+          200: '#efeff4d9',
+          400: '#e5e5ea',
+          600: '#999999'
+        },
         'cupertino-pink': {
           200: '#ff6483',
           400: '#ff375f',

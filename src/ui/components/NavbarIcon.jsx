@@ -1,5 +1,6 @@
 import {NavLink, useLocation} from 'react-router-dom'
 import Ripples from 'react-ripples'
+import PropTypes from 'prop-types'
 
 export const NavbarIcon = ({iconClass, text, link}) => {
 
@@ -19,4 +20,10 @@ export const NavbarIcon = ({iconClass, text, link}) => {
             </NavLink>
 
     )
+}
+
+NavbarIcon.propTypes = {
+    iconClass: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    link: PropTypes.string.isRequired
 }

@@ -1,6 +1,7 @@
 import {Header} from './Header'
 import {OutlineIconButton} from '../OutlineIconButton'
 import {HeaderTitle} from './HeaderTitle'
+import PropTypes from 'prop-types'
 
 export const MainHeader = ({pageTitle}) => {
 
@@ -20,4 +21,8 @@ export const MainHeader = ({pageTitle}) => {
             <HeaderTitle title={pageTitle} />
         </>
     )
+}
+
+MainHeader.propTypes = {
+    pageTitle: PropTypes.string.isRequired
 }

@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'
+
 export const Header = ({title, leftIcons, rightIcons}) => {
     return (
         <>
@@ -13,4 +15,10 @@ export const Header = ({title, leftIcons, rightIcons}) => {
             </div>
         </>
     )
+}
+
+Header.propTypes = {
+    title: PropTypes.string.isRequired,
+    leftIcons: PropTypes.element,
+    rightIcons: PropTypes.element
 }
