@@ -3,7 +3,7 @@ import CrossfadeImage from 'react-crossfade-image'
 
 export const FullToggleImage = ({image, play}) => {
 
-    const classWidth = play ? 'w-10/12 md:w-1/3 lg:w-3/12 max-w-md' : 'w-8/12 md:w-2/12 lg:w-2/12 max-w-sm'
+    const classWidth = play ? 'w-10/12 md:w-2/3 lg:w-3/12 max-w-lg' : 'w-8/12 md:w-2/12 lg:w-2/12 max-w-md'
 
     return (
         <div className={`${classWidth} rounded-lg transition-all duration-300 ease-in-out`}>

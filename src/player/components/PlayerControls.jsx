@@ -15,7 +15,7 @@ export const PlayerControls = ({
 
 
     return (
-        <div className="w-full flex flex-col gap-y-6 md:gap-y-10">
+        <div className="w-full flex flex-col gap-y-6 md:gap-y-10 mt-4">
             <div className="w-full flex justify-around items-center text-white text-5xl">
                 <OutlineIconButton
                     handleClick={handleBackClick}
