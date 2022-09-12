@@ -1,5 +1,5 @@
 import {useNavigate} from 'react-router-dom'
-
+import {motion} from 'framer-motion'
 import {OutlineIconButton} from './OutlineIconButton'
 import {usePlayerStore} from '../../hooks/store/usePlayerStore'
 
@@ -15,7 +15,8 @@ export const MusicBar = () => {
             onClick={() => navigate('/player')}
             className="flex items-center px-3 py-2 border-t-1 bg-white dark:bg-cupertino-basic-background-darkalt dark:border-t-0 border-cupertino-system-grey-200 cursor-pointer text-cupertino-label dark:text-cupertino-label-dark transition-all duration-300 ease-in-out"
         >
-            <img
+            <motion.img
+                layoutId='music-player-album'
                 className='w-12 rounded-md'
                 src={image}
                 alt="Ye"

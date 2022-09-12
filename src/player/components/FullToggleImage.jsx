@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { motion } from 'framer-motion'
+import {AnimatePresence, motion} from 'framer-motion'
 import CrossfadeImage from 'react-crossfade-image'
 
 export const FullToggleImage = ({lyricsImage = false, image, play, handleOnLyricsMode}) => {
@@ -47,21 +47,24 @@ export const FullToggleImage = ({lyricsImage = false, image, play, handleOnLyric
     }
 
     return (
-        <motion.div
-            onClick={handleClick}
-            initial={'play'}
-            animate={ !lyricsImage ? (play ? 'play': 'pause'): 'lyrics'}
-            variants={variants}
-            className={`rounded-lg shrink-0`}
-        >
-            <CrossfadeImage
-                style={{borderRadius: '0.375rem'}}
-                src={image}
-                duration={1000}
-                timingFunction={"ease-out"}
-                alt="album-artist"
-            />
-        </motion.div>
+        <AnimatePresence>
+            <motion.div
+                layoutId='music-player-album'
+                onClick={handleClick}
+                initial={'play'}
+                animate={ !lyricsImage ? (play ? 'play': 'pause'): 'lyrics'}
+                variants={variants}
+                className={`rounded-lg shrink-0`}
+            >
+                <CrossfadeImage
+                    style={{borderRadius: '0.375rem'}}
+                    src={image}
+                    duration={1000}
+                    timingFunction={"ease-out"}
+                    alt="album-artist"
+                />
+            </motion.div>
+        </AnimatePresence>
     )
 }
 
