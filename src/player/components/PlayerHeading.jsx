@@ -13,7 +13,6 @@ export const PlayerHeading = ({name, author, explicit = false, lyricsHeading = f
         },
         'lyrics': {
             width: 'auto',
-            flexGrow: 1,
             transition: {
                 type: "spring",
                 duration: 0.25
@@ -22,15 +21,12 @@ export const PlayerHeading = ({name, author, explicit = false, lyricsHeading = f
     }
 
     return (
-        <motion.div
-            initial={'normal'}
-            variants={variants}
-            animate={!lyricsHeading ? 'normal': 'lyrics'}
-            className={`flex gap-x-5 py-2`}
+        <div
+            className='w-full md:grow flex justify-between items-start gap-x-3'
         >
 
-            <div className='grow flex flex-col justify-center overflow-hidden text-xl'>
-                <h1 className='text-white truncate flex gap-1 items-center'>
+            <div className={`flex flex-col justify-center ${lyricsHeading ? 'text-base md:text-xl' : 'text-xl'} overflow-hidden`}>
+                <h1 className='text-white truncate flex gap-1 items-center truncate'>
                     {name}
                     {explicit && <i className="fa-solid fa-exclamation-circle fa-sm text-white text-opacity-70"></i>}
                 </h1>
@@ -39,7 +35,7 @@ export const PlayerHeading = ({name, author, explicit = false, lyricsHeading = f
             <div className='shrink-0 h-7 w-7 flex flex-wrap items-center justify-center bg-white bg-opacity-30 text-white rounded-full'>
                 <i className='fill-current fa-solid fa-ellipsis-vertical fa-md'></i>
             </div>
-        </motion.div>
+        </div>
     )
 }
 

@@ -1,10 +1,14 @@
-import {usePlayerStore} from '../../hooks/store/usePlayerStore'
 import {useEffect, useState} from 'react'
 import {motion} from 'framer-motion'
 import { extractColorsFromSrc } from 'extract-colors'
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+import {usePlayerStore} from '../../hooks/store/usePlayerStore'
 import {BackgroundLayout} from '../layout/BackgroundLayout'
 import {FullToggleImage, PlayerControls, PlayerHeading, PlayerSlider} from '../components'
-
+import 'swiper/css';
+import {LyricRow} from '../components/LyricRow'
+import {AnimatePresence} from 'framer-motion'
 
 export const PlayerRoutes = () => {
 
@@ -27,41 +31,48 @@ export const PlayerRoutes = () => {
         getColors()
     }, [image])
 
-    const variants = {
-        'normal': {
-            flexDirection: 'column',
-            rowGap: '1.25rem',
-            transition: {
-                type: "spring",
-                duration: 0.25,
-            }
-        },
-        'lyrics': {
-            flexDirection: 'row',
-            columnGap: '1.25rem',
-            alignItems: 'center',
-            transition: {
-                type: "spring",
-                duration: 0.25,
-            }
-        }
-    }
-    //${seeLyrics ? 'flex-wrap flex-row gap-x-5 items-center': 'flex-col gap-y-5'}
+
     return (
         <BackgroundLayout
-            className='w-full flex flex-wrap flex-col justify-evenly items-center lg:flex-row lg:justify-center'
+            className='w-full px-4 flex flex-wrap flex-col justify-evenly items-center lg:flex-row lg:justify-center md:gap-x-7 lg:gap-x-10'
             gradientColors={gradientColors}
         >
-            <motion.div
-                initial={false}
-                animate={ !seeLyrics ? 'normal' : 'lyrics'}
-                variants={variants}
-                className={`w-full flex flex-wrap px-6 max-w-xl`}
+            <div
+                className={`w-full flex flex-col gap-y-5 max-w-xl`}
             >
-                <FullToggleImage play={play} image={image} lyricsImage={seeLyrics} />
-                <PlayerHeading author={author} name={name} lyricsHeading={seeLyrics} />
-            </motion.div>
-            <div className='w-full flex flex-col px-6 max-w-2xl'>
+                <div className={`w-full flex ${seeLyrics ? 'flex-row': 'flex-col'} gap-y-5 gap-x-2`}>
+                    <FullToggleImage handleOnLyricsMode={() => setSeeLyrics(false)} play={play} image={image} lyricsImage={seeLyrics} />
+                    <PlayerHeading author={author} name={name} lyricsHeading={seeLyrics} />
+                </div>
+                <AnimatePresence>
+                    {
+                        seeLyrics && (
+                            <motion.div
+                                key='lyrics'
+                                initial={{height: '0rem'}}
+                                animate={{height: '12rem'}}
+                                exit={{height: '0rem'}}
+                                className='w-full flex h-48'
+                            >
+                                <Swiper
+                                    className='w-full'
+                                    spaceBetween={1}
+                                    slidesPerView={4}
+                                    direction='vertical'
+                                >
+                                    <SwiperSlide><LyricRow text='Lorem ipsum aset' active /></SwiperSlide>
+                                    <SwiperSlide><LyricRow text='Lorem ipsum aset' /></SwiperSlide>
+                                    <SwiperSlide><LyricRow text='Lorem ipsum aset' /></SwiperSlide>
+                                    <SwiperSlide><LyricRow text='Lorem ipsum aset' /></SwiperSlide>
+                                    <SwiperSlide><LyricRow text='Lorem ipsum aset' /></SwiperSlide>
+                                    <SwiperSlide><LyricRow text='Lorem ipsum aset' /></SwiperSlide>
+                                </Swiper>
+                            </motion.div>
+                        )
+                    }
+                </AnimatePresence>
+            </div>
+            <div className='w-full flex flex-col max-w-2xl'>
                 <PlayerSlider duration={100} actualTrackTime={100} handleChangeTrackTime={() => {}} />
                 <PlayerControls
                     playing={play}

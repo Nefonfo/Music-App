@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { motion } from 'framer-motion'
 import CrossfadeImage from 'react-crossfade-image'
 
-export const FullToggleImage = ({lyricsImage = false, image, play}) => {
+export const FullToggleImage = ({lyricsImage = false, image, play, handleOnLyricsMode}) => {
 
     const variants={
         play: {
@@ -12,7 +12,7 @@ export const FullToggleImage = ({lyricsImage = false, image, play}) => {
             transition: {
                 type: "spring",
                 duration: 1,
-                bounce: 0.5,
+                bounce: 0.35,
                 delay: 0.05,
             },
         },
@@ -40,12 +40,19 @@ export const FullToggleImage = ({lyricsImage = false, image, play}) => {
         }
     }
 
+    const handleClick = () => {
+        if(lyricsImage){
+            handleOnLyricsMode()
+        }
+    }
+
     return (
         <motion.div
+            onClick={handleClick}
             initial={'play'}
             animate={ !lyricsImage ? (play ? 'play': 'pause'): 'lyrics'}
             variants={variants}
-            className={`rounded-lg`}
+            className={`rounded-lg shrink-0`}
         >
             <CrossfadeImage
                 style={{borderRadius: '0.375rem'}}
