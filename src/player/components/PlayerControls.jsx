@@ -36,7 +36,7 @@ export const PlayerControls = ({
             <div className="w-full flex justify-around items-center text-white opacity-90 text-2xl">
                 <OutlineIconButton
                     handleClick={handleLyricsClick}
-                    iconClass="fa-solid fa-message text-white opacity-40"
+                    iconClass="fa-solid fa-message"
                     rippleColor={rippleColor}
                 />
 

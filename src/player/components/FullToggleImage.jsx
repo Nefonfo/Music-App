@@ -1,12 +1,52 @@
 import PropTypes from 'prop-types'
+import { motion } from 'framer-motion'
 import CrossfadeImage from 'react-crossfade-image'
 
-export const FullToggleImage = ({image, play}) => {
+export const FullToggleImage = ({lyricsImage = false, image, play}) => {
 
-    const classWidth = play ? 'w-10/12 md:w-2/3 lg:w-3/12 max-w-lg' : 'w-8/12 md:w-2/12 lg:w-2/12 max-w-md'
+    const variants={
+        play: {
+            scale: 1,
+            height: '100%',
+            width: '100%',
+            transition: {
+                type: "spring",
+                duration: 1,
+                bounce: 0.5,
+                delay: 0.05,
+            },
+        },
+        pause: {
+            scale: 0.73,
+            height: '100%',
+            width: '100%',
+            transition: {
+                type: "spring",
+                duration: 0.7,
+                bounce: 0,
+                delay: 0.05,
+            },
+        },
+        lyrics: {
+            scale: 1,
+            height: '4rem',
+            width: '4rem',
+            transition: {
+                type: "spring",
+                duration: 1,
+                bounce: 0,
+                delay: 0.05,
+            }
+        }
+    }
 
     return (
-        <div className={`${classWidth} rounded-lg transition-all duration-300 ease-in-out`}>
+        <motion.div
+            initial={'play'}
+            animate={ !lyricsImage ? (play ? 'play': 'pause'): 'lyrics'}
+            variants={variants}
+            className={`rounded-lg`}
+        >
             <CrossfadeImage
                 style={{borderRadius: '0.375rem'}}
                 src={image}
@@ -14,11 +54,12 @@ export const FullToggleImage = ({image, play}) => {
                 timingFunction={"ease-out"}
                 alt="album-artist"
             />
-        </div>
+        </motion.div>
     )
 }
 
 FullToggleImage.propTypes = {
+    lyricsImage: PropTypes.bool,
     image: PropTypes.string.isRequired,
     play: PropTypes.bool.isRequired
 }
