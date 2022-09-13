@@ -8,7 +8,7 @@ export const PlayerHeading = ({name, author, explicit = false, small = false}) =
         >
             <div className={`flex flex-col justify-center ${small ? 'text-base md:text-xl' : 'text-xl'} overflow-hidden`}>
                 <h3
-                    className='grow px-2 truncate text-cupertino-label-dark'
+                    className='grow truncate text-cupertino-label-dark'
                 >
                     {name}
                     {explicit && <i className="ml-2 fa-solid fa-exclamation-circle fa-lg text-cupertino-label-dark opacity-70"></i>}

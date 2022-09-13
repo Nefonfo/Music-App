@@ -8,7 +8,7 @@ export const BackgroundLayout = styled.div`
   &:before {
     content: "";
     position: fixed;
-    z-index: -1;   
+    z-index: -2;   
     background-color: ${({gradientColors}) => gradientColors.length === 3 ? gradientColors[0].hex : '#000000'};
     background-image: ${
         ({gradientColors}) => gradientColors.length === 3 && `

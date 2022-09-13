@@ -39,7 +39,20 @@ const playingMusicList = [
             author: 'Lil Nas X',
             explicit: true
         }
-    }
+    },
+    {
+        id: 4,
+        name: 'Santeria',
+        author: 'Pusha T',
+        explicit: true,
+        album: {
+            id: 4,
+            image: `${process.env.PUBLIC_URL}/images/albums_images/pusha.jpg`,
+            name: 'DAYTONA',
+            author: 'Pusha T',
+            explicit: true
+        }
+    },
 ]
 
 export const playerSlice = createSlice({
