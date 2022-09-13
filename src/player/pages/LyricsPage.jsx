@@ -2,8 +2,9 @@ import {useNavigate} from 'react-router-dom'
 import {usePlayerStore} from '../../hooks'
 import {FullToggleImage, LyricRow, PlayerHeading} from '../components'
 import Slider from "react-slick";
-
+import {motion} from 'framer-motion'
 import 'slick-carousel/slick/slick.css'
+import {AnimatePresence} from 'framer-motion'
 
 export const LyricsPage = () => {
 
@@ -40,8 +41,16 @@ export const LyricsPage = () => {
                     explicit={explicit}
                 />
             </div>
-
+            <motion.div
+                initial={{opacity: 0}}
+                exit={{opacity: 0}}
+                animate={{opacity: 1}}
+                transition={{
+                    duration: 2.5
+                }}
+            >
                 <Slider
+
                     {...settings}
                 >
                     <LyricRow text="Now the tears dry and the pain takes over" active />
@@ -50,6 +59,7 @@ export const LyricsPage = () => {
                     <LyricRow text="And blood spill, we can't talk this shit over (this shit over)" />
                     <LyricRow text="The Lord is my shepherd, I am not sheep" />
                 </Slider>
+            </motion.div>
 
         </>
     )

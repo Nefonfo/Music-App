@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import {AnimatePresence, motion} from 'framer-motion'
 
 export const FullToggleImage = ({small = false, image, play, handleOnSmall}) => {
 
@@ -9,16 +10,19 @@ export const FullToggleImage = ({small = false, image, play, handleOnSmall}) => 
     }
 
     return (
-            <div
-                onClick={handleClick}
-                className={`${small ? 'h-16 w-16 cursor-pointer': (play ? 'w-full': 'w-10/12')} rounded-lg shrink-0`}
-            >
-                <img
-                    style={{borderRadius: '0.375rem'}}
-                    src={image}
-                    alt="album-artist"
-                />
-            </div>
+            <AnimatePresence>
+                <motion.div
+                    layoutId='player-album-image'
+                    onClick={handleClick}
+                    className={`${small ? 'h-16 w-16 cursor-pointer': (play ? 'w-full': 'w-10/12')} rounded-lg shrink-0`}
+                >
+                    <img
+                        style={{borderRadius: '0.375rem'}}
+                        src={image}
+                        alt="album-artist"
+                    />
+                </motion.div>
+            </AnimatePresence>
     )
 }
 
