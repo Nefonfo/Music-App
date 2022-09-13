@@ -1,75 +1,30 @@
 import PropTypes from 'prop-types'
-import {AnimatePresence, motion} from 'framer-motion'
-import CrossfadeImage from 'react-crossfade-image'
 
-export const FullToggleImage = ({lyricsImage = false, image, play, handleOnLyricsMode}) => {
-
-    const variants={
-        play: {
-            scale: 1,
-            height: '100%',
-            width: '100%',
-            transition: {
-                type: "spring",
-                duration: 1,
-                bounce: 0.35,
-                delay: 0.05,
-            },
-        },
-        pause: {
-            scale: 0.73,
-            height: '100%',
-            width: '100%',
-            transition: {
-                type: "spring",
-                duration: 0.7,
-                bounce: 0,
-                delay: 0.05,
-            },
-        },
-        lyrics: {
-            scale: 1,
-            height: '4rem',
-            width: '4rem',
-            transition: {
-                type: "spring",
-                duration: 1,
-                bounce: 0,
-                delay: 0.05,
-            }
-        }
-    }
+export const FullToggleImage = ({small = false, image, play, handleOnSmall}) => {
 
     const handleClick = () => {
-        if(lyricsImage){
-            handleOnLyricsMode()
+        if(small){
+            handleOnSmall && handleOnSmall()
         }
     }
 
     return (
-        <AnimatePresence>
-            <motion.div
-                layoutId='music-player-album'
+            <div
                 onClick={handleClick}
-                initial={'play'}
-                animate={ !lyricsImage ? (play ? 'play': 'pause'): 'lyrics'}
-                variants={variants}
-                className={`rounded-lg shrink-0`}
+                className={`${small ? 'h-16 w-16 cursor-pointer': (play ? 'w-full': 'w-10/12')} rounded-lg shrink-0`}
             >
-                <CrossfadeImage
+                <img
                     style={{borderRadius: '0.375rem'}}
                     src={image}
-                    duration={1000}
-                    timingFunction={"ease-out"}
                     alt="album-artist"
                 />
-            </motion.div>
-        </AnimatePresence>
+            </div>
     )
 }
 
 FullToggleImage.propTypes = {
-    lyricsImage: PropTypes.bool,
+    small: PropTypes.bool,
     image: PropTypes.string.isRequired,
-    play: PropTypes.bool.isRequired
+    play: PropTypes.bool.isRequired,
+    handleOnSmall: PropTypes.func
 }

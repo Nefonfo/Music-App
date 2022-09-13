@@ -1,10 +1,7 @@
-import {useEffect} from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import {motion} from 'framer-motion'
 
-
-
-export const BackgroundLayout = styled(motion.div)`
+export const BackgroundLayout = styled.div`
   
   min-height: 100vh;
   min-height: fill-available;
@@ -32,5 +29,8 @@ export const BackgroundLayout = styled(motion.div)`
       transform: scale(4) rotate(360deg);
     }
   }
-
 `
+
+BackgroundLayout.propTypes = {
+        gradientColors: PropTypes.array
+}

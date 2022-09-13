@@ -1,6 +1,6 @@
+import PropTypes from 'prop-types'
 import {NavLink, useLocation} from 'react-router-dom'
 import Ripples from 'react-ripples'
-import PropTypes from 'prop-types'
 
 export const NavbarIcon = ({iconClass, text, link}) => {
 

@@ -6,12 +6,12 @@ export const BrowserRoutes = () => {
     return (
         <ClassicLayout>
             <Routes>
-                <Route path='listen' element={<ListenPage />} />
-                <Route path='explore' element={<ExplorePage />} />
-                <Route path='radio' element={<RadioPage />} />
-                <Route path='collection' element={<CollectionPage />} />
-                <Route path='search' element={<SearchPage />} />
-                <Route path='*' element={<Navigate to='/browse/listen' />} />
+                <Route path='/listen' element={<ListenPage />} />
+                <Route path='/explore' element={<ExplorePage />} />
+                <Route path='/radio' element={<RadioPage />} />
+                <Route path='/collection' element={<CollectionPage />} />
+                <Route path='/search' element={<SearchPage />} />
+                <Route path='/*' element={<Navigate to='/browse/listen' />} />
             </Routes>
         </ClassicLayout>
     )

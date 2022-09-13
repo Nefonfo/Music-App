@@ -2,31 +2,57 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const playingMusicList = [
     {
+        id: 1,
         name: 'I Thought About Killing You',
-        image: `${process.env.PUBLIC_URL}/images/albums_images/ye.jpg`,
         author: 'Kanye West',
-        explicit: true
+        explicit: true,
+        album: {
+            id: 1,
+            image: `${process.env.PUBLIC_URL}/images/albums_images/ye.jpg`,
+            name: 'Ye',
+            author: 'Kanye West',
+            explicit: true
+        }
     },
     {
+        id: 2,
         name: 'Una Soga',
-        image: `${process.env.PUBLIC_URL}/images/albums_images/viva.jpg`,
         author: 'Viva Belgrado',
-        explicit: true
+        explicit: true,
+        album: {
+            id: 2,
+            image: `${process.env.PUBLIC_URL}/images/albums_images/viva.jpg`,
+            name: 'Bellavista',
+            author: 'Viva Belgrado',
+            explicit: true
+        }
     },
     {
+        id: 3,
         name: 'Industrial Baby',
-        image: `${process.env.PUBLIC_URL}/images/albums_images/lil.jpg`,
         author: 'Lil Nas X',
-        explicit: true
+        explicit: true,
+        album: {
+            id: 3,
+            image: `${process.env.PUBLIC_URL}/images/albums_images/lil.jpg`,
+            name: 'Montero',
+            author: 'Lil Nas X',
+            explicit: true
+        }
     }
 ]
 
 export const playerSlice = createSlice({
     name: 'player',
     initialState: {
+        queue: {
+            current: playingMusicList,
+            actualItem: 0,
+            nextItemExists: true,
+            lastItemExists: false
+        },
         playing: {
             play: true,
-            trackItem: 0,
             song: playingMusicList[0]
         }
     },
@@ -34,24 +60,24 @@ export const playerSlice = createSlice({
         playToggle: (state) => {
             state.playing.play = !state.playing.play
         },
-        nextSong: (state) => {
-
-            if(state.playing.trackItem + 1 === playingMusicList.length){
-                state.playing.trackItem = 0
-            } else {
-                state.playing.trackItem++
-            }
-            state.playing.song = playingMusicList[state.playing.trackItem]
+        updatePlayer: (state) => {
+            state.queue.nextItemExists = state.queue.actualItem < state.queue.current.length - 1
+            state.queue.lastItemExists = (state.queue.actualItem > 0) && (state.queue.current.length > 1)
+            state.playing.play = true
+            state.playing.song = state.queue.current[state.queue.actualItem]
         },
-        lastSong: (state) => {
-
-            if (state.playing.trackItem === 0){
-                state.playing.trackItem = playingMusicList.length - 1
-            } else {
-                state.playing.trackItem--
+        nextSong: (state, action) => {
+            if(state.queue.nextItemExists) {
+                state.queue.actualItem++
+                console.log('entro')
+                playerSlice.caseReducers.updatePlayer(state, action)
             }
-
-            state.playing.song = playingMusicList[state.playing.trackItem]
+        },
+        lastSong: (state, action) => {
+            if(state.queue.lastItemExists) {
+                state.queue.actualItem--
+                playerSlice.caseReducers.updatePlayer(state, action)
+            }
         }
     }
 });

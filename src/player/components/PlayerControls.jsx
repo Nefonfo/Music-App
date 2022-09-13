@@ -12,14 +12,16 @@ export const PlayerControls = ({
                                }) => {
 
     const rippleColor = 'rgba(174, 174, 178, 0.5)'
+    const backExtraClasses = !handleBackClick ? 'text-white opacity-30': ''
+    const nextExtraClasses = !handleNextClick ? 'text-white opacity-30': ''
 
 
     return (
         <div className="w-full flex flex-col gap-y-6 md:gap-y-10 mt-4">
-            <div className="w-full flex justify-around items-center text-white text-5xl">
+            <div className="w-full flex justify-around items-center text-cupertino-label-dark text-5xl">
                 <OutlineIconButton
                     handleClick={handleBackClick}
-                    iconClass="fa-solid fa-backward"
+                    iconClass={`${backExtraClasses} fa-solid fa-backward`}
                     rippleColor={rippleColor}
                 />
                 <OutlineIconButton
@@ -29,7 +31,7 @@ export const PlayerControls = ({
                 />
                 <OutlineIconButton
                     handleClick={handleNextClick}
-                    iconClass="fa-solid fa-forward"
+                    iconClass={`${nextExtraClasses} fa-solid fa-forward`}
                     rippleColor={rippleColor}
                 />
             </div>
@@ -53,8 +55,8 @@ export const PlayerControls = ({
 PlayerControls.propTypes = {
     playing: PropTypes.bool.isRequired,
     handlePlayClick: PropTypes.func.isRequired,
-    handleBackClick: PropTypes.func.isRequired,
-    handleNextClick: PropTypes.func.isRequired,
+    handleBackClick: PropTypes.func,
+    handleNextClick: PropTypes.func,
     handleLyricsClick: PropTypes.func.isRequired,
     handleListClick: PropTypes.func.isRequired
 }

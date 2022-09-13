@@ -1,5 +1,5 @@
-import Ripples from 'react-ripples'
 import PropTypes from 'prop-types'
+import Ripples from 'react-ripples'
 
 export const OutlineIconButton = ({
                                       iconClass,
@@ -9,7 +9,7 @@ export const OutlineIconButton = ({
                                       handleClick
                                   }) => {
     return (
-        <Ripples onClick={() => handleClick && handleClick()} className="rounded-full cursor-pointer"
+        <Ripples onClick={handleClick ? handleClick: null} className="rounded-full cursor-pointer"
                  color={rippleColor}>
             <div className={`${innerExtraClass}`}>
                 <i className={`${iconClass} ${(iconSizeClass) ? iconSizeClass : ''}`}></i>
@@ -23,5 +23,5 @@ OutlineIconButton.propTypes = {
     innerExtraClass: PropTypes.string,
     iconSizeClass: PropTypes.string,
     rippleColor: PropTypes.string.isRequired,
-    handleClick: PropTypes.func.isRequired
+    handleClick: PropTypes.func
 }
