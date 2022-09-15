@@ -14,7 +14,7 @@ export const FullToggleImage = ({small = false, image, play, handleOnSmall}) => 
                 <motion.div
                     layoutId='player-album-image'
                     onClick={handleClick}
-                    className={`${small ? 'h-16 w-16 cursor-pointer': (play ? 'w-full': 'w-10/12')} rounded-lg shrink-0`}
+                    className={`${small ? 'h-16 w-16 cursor-pointer': (play ? 'w-full md:w-11/12': 'w-10/12 md:w-10/12')} rounded-lg shrink-0`}
                 >
                     <img
                         style={{borderRadius: '0.375rem'}}

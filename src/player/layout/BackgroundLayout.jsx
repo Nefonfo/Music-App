@@ -10,12 +10,12 @@ export const BackgroundLayout = styled(motion.div)`
     content: "";
     position: fixed;
     z-index: -2;   
-    background-color: ${({gradientColors}) => gradientColors.length === 3 ? gradientColors[0].hex : '#000000'};
+    background-color: ${({$gradientColor}) => $gradientColor.length === 3 ? $gradientColor[0].hex : '#000000'};
     background-image: ${
-        ({gradientColors}) => gradientColors.length === 3 && `
-                radial-gradient(at 0% 0%, ${gradientColors[0].hex} 0px, transparent 80%), 
-                radial-gradient(at 100% 0%, ${gradientColors[1].hex} 0px, transparent 80%), 
-                radial-gradient(at 0% 100%, ${gradientColors[2].hex} 0px, transparent 80%)`
+        ({$gradientColor}) => $gradientColor.length === 3 && `
+                radial-gradient(at 0% 0%, ${$gradientColor[0].hex} 0px, transparent 80%), 
+                radial-gradient(at 100% 0%, ${$gradientColor[1].hex} 0px, transparent 80%), 
+                radial-gradient(at 0% 100%, ${$gradientColor[2].hex} 0px, transparent 80%)`
         };
     animation: spin 80s infinite ease-in-out alternate;
     transition: all 3s linear;
@@ -33,5 +33,5 @@ export const BackgroundLayout = styled(motion.div)`
 `
 
 BackgroundLayout.propTypes = {
-        gradientColors: PropTypes.array
+        $gradientColor: PropTypes.array
 }

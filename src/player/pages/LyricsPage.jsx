@@ -1,10 +1,12 @@
 import {useNavigate} from 'react-router-dom'
-import {usePlayerStore} from '../../hooks'
-import {FullToggleImage, LyricRow, PlayerHeading} from '../components'
-import Slider from "react-slick";
 import {motion} from 'framer-motion'
-import 'slick-carousel/slick/slick.css'
-import {AnimatePresence} from 'framer-motion'
+import Slider from "react-slick";
+
+import {usePlayerStore} from '../../hooks'
+import {FullToggleImage, PlayerHeading} from '../components'
+import {LyricRow} from '../components/LyricRow'
+
+import './css/LyricsPage.css'
 
 export const LyricsPage = () => {
 
@@ -19,7 +21,7 @@ export const LyricsPage = () => {
         infinite: false,
         draggable: true,
         className: 'cursor-pointer',
-        slidesToScroll: 1,
+        slidesToScroll: 3,
         slidesToShow: 3,
         vertical: true,
         verticalSwiping: true,
@@ -46,19 +48,19 @@ export const LyricsPage = () => {
                 exit={{opacity: 0}}
                 animate={{opacity: 1}}
                 transition={{
-                    duration: 2.5
+                    duration: 1
                 }}
+                className='flex flex-1 max-h-max flex-col pb-10 lg:pb-0'
             >
-                <Slider
 
-                    {...settings}
-                >
-                    <LyricRow text="Now the tears dry and the pain takes over" active />
-                    <LyricRow text="Let's talk this payola (payola)" />
-                    <LyricRow text="You killed God's baby when it wasn't his will" />
-                    <LyricRow text="And blood spill, we can't talk this shit over (this shit over)" />
-                    <LyricRow text="The Lord is my shepherd, I am not sheep" />
-                </Slider>
+                    <Slider {...settings}>
+                        <LyricRow text="Now the tears dry and the pain takes over" active />
+                        <LyricRow text="Let's talk this payola (payola)" />
+                        <LyricRow text="You killed God's baby when it wasn't his will" />
+                        <LyricRow text="And blood spill, we can't talk this shit over (this shit over)" />
+                        <LyricRow text="The Lord is my shepherd, I am not sheep" />
+                    </Slider>
+
             </motion.div>
 
         </>

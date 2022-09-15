@@ -20,13 +20,10 @@ export const MusicBar = ({name, image, explicit, isPlaying, playMusic, nextMusic
                 src={image}
                 alt="Ye"
             />
-            <motion.h3
-                layoutId='browser-music-bar-heading'
-                className='grow px-2 truncate'
-            >
+            <h3 className='grow px-2 truncate'>
                 {name}
                 {explicit && <i className="ml-2 fa-solid fa-exclamation-circle fa-lg text-cupertino-label dark:text-cupertino-label-dark opacity-70"></i>}
-            </motion.h3>
+            </h3>
             <OutlineIconButton
                 handleClick={playMusic}
                 iconClass={`fa-solid ${!isPlaying ? 'fa-play': 'fa-pause'}`}

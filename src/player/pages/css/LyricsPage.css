@@ -1,0 +1,5 @@
+.slick-slider {
+    @apply h-full;
+    @apply overflow-hidden;
+    @apply flex flex-col;
+}
