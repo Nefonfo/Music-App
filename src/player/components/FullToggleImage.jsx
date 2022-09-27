@@ -11,17 +11,13 @@ export const FullToggleImage = ({small = false, image, play, handleOnSmall}) => 
 
     return (
             <AnimatePresence>
-                <motion.div
+                <motion.img
                     layoutId='player-album-image'
                     onClick={handleClick}
+                    src={image}
+                    alt="album-artist"
                     className={`${small ? 'h-16 w-16 cursor-pointer': (play ? 'w-full md:w-11/12': 'w-10/12 md:w-10/12')} rounded-lg shrink-0`}
-                >
-                    <img
-                        style={{borderRadius: '0.375rem'}}
-                        src={image}
-                        alt="album-artist"
-                    />
-                </motion.div>
+                />
             </AnimatePresence>
     )
 }

@@ -5,6 +5,9 @@ module.exports = {
     "./public/index.html"
   ],
   theme: {
+    fontFamily: {
+      sans: ['-apple-system', 'BlinkMacSystemFont', 'sans-serif']
+    },
     extend: {
       borderWidth: {
         1: '0.1px'

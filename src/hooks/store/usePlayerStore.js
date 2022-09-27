@@ -1,10 +1,11 @@
 import {useDispatch, useSelector} from 'react-redux'
-import {lastSong, nextSong, playToggle} from '../../store/player'
+import {deleteSongFromQueue, lastSong, nextSong, playToggle, reorderQueue} from '../../store/player'
 
 export const usePlayerStore = () => {
 
     const dispatch = useDispatch()
-    const { playing, queue } = useSelector(state => state.player)
+    const { play, queue } = useSelector(state => state.player)
+    const {historical, current} = queue
 
     const playMusic = () => {
         dispatch(playToggle())
@@ -18,19 +19,25 @@ export const usePlayerStore = () => {
         dispatch(lastSong())
     }
 
-    const actualQueue = queue.current.slice(queue.actualItem + 1)
+    const reorderMusic = (newOrder) => {
+        dispatch(reorderQueue([current[0], ...newOrder]))
+    }
 
+    const deleteMusic = (queueId) => {
+        dispatch(deleteSongFromQueue(queueId))
+    }
 
     return {
         // attributes
-        playingNow: playing ? {...playing.song} : null,
-        play: playing.play,
-        nextItemExists: queue.nextItemExists,
-        lastItemExists: queue.lastItemExists,
-        actualQueue,
+        playingNow: current[0],
+        play: play,
+        nextItemExists: current.length > 1,
+        lastItemExists: historical.length >= 1,
+        actualQueue: current.slice(1),
         //methods
         playMusic,
         nextMusic,
-        lastMusic
+        lastMusic,
+        reorderMusic
     }
 }

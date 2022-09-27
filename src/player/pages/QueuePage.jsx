@@ -1,8 +1,8 @@
-import {useEffect, useState} from 'react'
+import {useNavigate} from 'react-router-dom'
+import {motion, Reorder, useDragControls} from 'framer-motion'
+
 import {usePlayerStore} from '../../hooks'
 import {PlayerHeading} from '../components'
-import {motion, Reorder, useDragControls} from 'framer-motion'
-import {useNavigate} from 'react-router-dom'
 
 const QueueItem = ({item}) => {
 
@@ -45,15 +45,9 @@ const QueueItem = ({item}) => {
 export const QueuePage = () => {
 
     const navigate = useNavigate()
-    const {playingNow, actualQueue} = usePlayerStore()
+    const {playingNow, actualQueue, reorderMusic} = usePlayerStore()
     const { name , author, explicit, album } = playingNow
     const { image } = album
-
-    const [queue, setQueue] = useState([])
-
-    useEffect(() => {
-        setQueue(actualQueue)
-    }, [actualQueue])
 
 
     return (
@@ -84,14 +78,22 @@ export const QueuePage = () => {
             />
 
             <Reorder.Group
+                initial={{opacity: 0}}
+                exit={{opacity: 0}}
+                animate={{opacity: 1}}
+                transition={{
+                    duration: 1
+                }}
                 as='div'
-                onReorder={setQueue}
-                values={queue} axis='y'
+                onReorder={(newOrder) => {
+                    reorderMusic(newOrder)
+                }}
+                values={actualQueue} axis='y'
                 className='flex flex-col gap-y-4'
             >
 
                 {
-                    queue.map((item) => <QueueItem key={item.id} item={item} />)
+                    actualQueue.map((item) => <QueueItem key={item.id} item={item} />)
                 }
 
             </Reorder.Group>
