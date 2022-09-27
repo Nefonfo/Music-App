@@ -1,12 +1,13 @@
-import {useNavigate} from 'react-router-dom'
 import {motion} from 'framer-motion'
 import Slider from "react-slick";
 
 import {usePlayerStore} from '../../hooks'
-import {FullToggleImage, PlayerHeading} from '../components'
 import {LyricRow} from '../components/LyricRow'
 
 import './css/LyricsPage.css'
+import {PlayerHeading} from '../components'
+import {useNavigate} from 'react-router-dom'
+
 
 export const LyricsPage = () => {
 
@@ -29,20 +30,30 @@ export const LyricsPage = () => {
 
     return (
         <>
-            <div className='w-full flex flex-row gap-y-5 gap-x-2'>
-                <FullToggleImage
-                    small={true}
-                    play={play}
-                    image={image}
-                    handleOnSmall={() => navigate('/player')}
-                />
-                <PlayerHeading
-                    small={true}
-                    author={author}
-                    name={name}
-                    explicit={explicit}
-                />
-            </div>
+            <PlayerHeading
+                play={play}
+                image={image}
+                songAuthor={author}
+                songTitle={name}
+                songExplicit={explicit}
+                textLayoutId='player-heading-text'
+                leftActions={
+                    <motion.img
+                        layoutId='player-album-image'
+                        className="rounded-lg h-16 w-16 cursor-pointer"
+                        src={image}
+                        alt="album"
+                        onClick={() => navigate('/player')}
+                    />
+                }
+                rightActions={
+                    <motion.div
+                        textLayoutId='player-heading-toggle'
+                        className="h-7 w-7 flex justify-center items-center rounded-full bg-white bg-opacity-20">
+                        <i className="fa-solid fa-ellipsis-vertical text-white"></i>
+                    </motion.div>
+                }
+            />
             <motion.div
                 initial={{opacity: 0}}
                 exit={{opacity: 0}}
@@ -53,13 +64,15 @@ export const LyricsPage = () => {
                 className='flex flex-1 max-h-max flex-col pb-10 lg:pb-0'
             >
 
-                    <Slider {...settings}>
-                        <LyricRow text="Now the tears dry and the pain takes over" active />
-                        <LyricRow text="Let's talk this payola (payola)" />
-                        <LyricRow text="You killed God's baby when it wasn't his will" />
-                        <LyricRow text="And blood spill, we can't talk this shit over (this shit over)" />
-                        <LyricRow text="The Lord is my shepherd, I am not sheep" />
-                    </Slider>
+                <Slider {...settings}>
+                    <LyricRow text="Nobody pray for me" active/>
+                    <LyricRow text="It been that day for me"/>
+                    <LyricRow text="Way (yeah, yeah!)"/>
+                    <LyricRow text="Ayy, I remember syrup sandwiches and crime allowances"/>
+                    <LyricRow text="Finesse a n**** with some counterfeits, but now I'm countin' this"/>
+                    <LyricRow text="Parmesan where my accountant lives; in fact, I'm downin' this"/>
+                    <LyricRow text="D'USSÉ with my boo bae tastes like Kool-Aid for the analysts"/>
+                </Slider>
 
             </motion.div>
 

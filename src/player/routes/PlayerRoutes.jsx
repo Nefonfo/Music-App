@@ -2,9 +2,8 @@ import {Navigate, Route, Routes, useLocation, useNavigate} from 'react-router-do
 
 import {usePlayerStore, useGradient} from '../../hooks'
 import {BackgroundLayout} from '../layout'
-import {AlbumPage, LyricsPage} from '../pages'
+import {AlbumPage, LyricsPage, QueuePage} from '../pages'
 import {PlayerControls, PlayerSlider} from '../components'
-import {AnimatePresence, AnimateSharedLayout} from 'framer-motion'
 
 export const PlayerRoutes = () => {
 
@@ -17,12 +16,11 @@ export const PlayerRoutes = () => {
 
     const gradient = useGradient(image)
 
-    const toggleLyrics = () => {
-        const lyricsUrl = '/player/lyrics'
-        if(location.pathname === lyricsUrl) {
-            navigate('/player')
+    const toggleNavigation = (match, redirect) => {
+        if(location.pathname === match) {
+            navigate(redirect)
         } else {
-            navigate(lyricsUrl)
+            navigate(match)
         }
     }
 
@@ -35,10 +33,6 @@ export const PlayerRoutes = () => {
                     ></div>
                 </div>
                 <BackgroundLayout
-                    initial={{opacity: 0}}
-                    animate={{opacity: 1}}
-                    exit={{opacity: 0}}
-                    transition={{ duration: 0.5 }}
                     className='w-full px-4 pt-6 md:pt-10 lg:pt-16 flex flex-wrap flex-row justify-between'
                     $gradientColor={gradient}
                 >
@@ -51,6 +45,7 @@ export const PlayerRoutes = () => {
                             <Routes>
                                 <Route path='/' element={<AlbumPage />} />
                                 <Route path='/lyrics' element={<LyricsPage />} />
+                                <Route path='/queue' element={<QueuePage />} />
                                 <Route path='/*' element={<Navigate to='/player' />} />
                             </Routes>
                         </div>
@@ -61,8 +56,8 @@ export const PlayerRoutes = () => {
                                 handlePlayClick={playMusic}
                                 handleNextClick={nextItemExists ? nextMusic : null}
                                 handleBackClick={lastItemExists ? lastMusic : null}
-                                handleLyricsClick={toggleLyrics}
-                                handleListClick={() => {}}
+                                handleLyricsClick={() => toggleNavigation('/player/lyrics', '/player')}
+                                handleListClick={() => toggleNavigation('/player/queue', '/player')}
                             />
                         </div>
                     </div>

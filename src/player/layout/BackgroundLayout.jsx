@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import {motion} from 'framer-motion'
 
-export const BackgroundLayout = styled(motion.div)`
+export const BackgroundLayout = styled.div`
   
   min-height: 100vh;
   min-height: fill-available;

@@ -1,32 +1,36 @@
-import PropTypes from 'prop-types'
 import {motion} from 'framer-motion'
+import * as PropTypes from 'prop-types'
 
-export const PlayerHeading = ({name, author, explicit = false, small = false}) => {
-
+export const PlayerHeading = ({songTitle, songAuthor, songExplicit, rightActions, leftActions, textLayoutId}) => {
     return (
-        <motion.div
-            layoutId='player-heading'
-            className='w-full md:grow flex justify-between items-start gap-x-3'
-        >
-            <div className={`flex flex-col justify-center ${small ? 'text-base md:text-xl' : 'text-xl'} overflow-hidden`}>
-                <h3
-                    className='grow truncate text-cupertino-label-dark'
-                >
-                    {name}
-                    {explicit && <i className="ml-2 fa-solid fa-exclamation-circle fa-lg text-cupertino-label-dark opacity-70"></i>}
-                </h3>
-                <span className='text-cupertino-label-dark text-opacity-60 truncate'>{author}</span>
-            </div>
-            <div className='shrink-0 h-7 w-7 flex flex-wrap items-center justify-center bg-white bg-opacity-30 text-white rounded-full cursor-pointer'>
-                <i className='fill-current fa-solid fa-ellipsis-vertical fa-md'></i>
-            </div>
-        </motion.div>
+        <div className="w-full flex justify-center items-center gap-x-5">
+            {leftActions}
+            {
+                textLayoutId ? (
+                    <motion.div
+                        layoutId={textLayoutId}
+                        className="grow flex flex-col text-white"
+                    >
+                        <h3 className="text-xl">{songTitle} {songExplicit && <i className="fa-sharp fa-solid fa-circle-exclamation opacity-60"></i>}</h3>
+                        <h4 className="text-base opacity-60">{songAuthor}</h4>
+                    </motion.div>
+                ) : (
+                    <div className="grow flex flex-col text-white">
+                        <h3 className="text-xl">{songTitle} {songExplicit && <i className="fa-sharp fa-solid fa-circle-exclamation opacity-60"></i>}</h3>
+                        <h4 className="text-base opacity-60">{songAuthor}</h4>
+                    </div>
+                )
+            }
+            { rightActions }
+        </div>
     )
 }
 
 PlayerHeading.propTypes = {
-    name: PropTypes.string.isRequired,
-    author: PropTypes.string.isRequired,
-    explicit: PropTypes.bool,
-    small: PropTypes.bool
+    songTitle: PropTypes.string.isRequired,
+    songAuthor: PropTypes.string.isRequired,
+    songExplicit: PropTypes.bool.isRequired,
+    rightActions: PropTypes.element,
+    leftActions: PropTypes.element,
+    textLayoutId: PropTypes.string
 }

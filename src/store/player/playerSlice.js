@@ -3,11 +3,24 @@ import { createSlice } from '@reduxjs/toolkit';
 const playingMusicList = [
     {
         id: 1,
+        name: 'HUMBLE.',
+        author: 'Kendrick Lamar',
+        explicit: true,
+        album: {
+            id: 1,
+            image: `${process.env.PUBLIC_URL}/images/albums_images/kendrick.jpg`,
+            name: 'DAMN.',
+            author: 'Kendrick Lamar',
+            explicit: true
+        }
+    },
+    {
+        id: 2,
         name: 'I Thought About Killing You',
         author: 'Kanye West',
         explicit: true,
         album: {
-            id: 1,
+            id: 2,
             image: `${process.env.PUBLIC_URL}/images/albums_images/ye.jpg`,
             name: 'Ye',
             author: 'Kanye West',
@@ -15,12 +28,12 @@ const playingMusicList = [
         }
     },
     {
-        id: 2,
+        id: 3,
         name: 'Una Soga',
         author: 'Viva Belgrado',
         explicit: true,
         album: {
-            id: 2,
+            id: 3,
             image: `${process.env.PUBLIC_URL}/images/albums_images/viva.jpg`,
             name: 'Bellavista',
             author: 'Viva Belgrado',
@@ -28,12 +41,12 @@ const playingMusicList = [
         }
     },
     {
-        id: 3,
+        id: 4,
         name: 'Industrial Baby',
         author: 'Lil Nas X',
         explicit: true,
         album: {
-            id: 3,
+            id: 4,
             image: `${process.env.PUBLIC_URL}/images/albums_images/lil.jpg`,
             name: 'Montero',
             author: 'Lil Nas X',
@@ -41,12 +54,12 @@ const playingMusicList = [
         }
     },
     {
-        id: 4,
+        id: 5,
         name: 'Santeria',
         author: 'Pusha T',
         explicit: true,
         album: {
-            id: 4,
+            id: 5,
             image: `${process.env.PUBLIC_URL}/images/albums_images/pusha.jpg`,
             name: 'DAYTONA',
             author: 'Pusha T',

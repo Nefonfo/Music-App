@@ -18,6 +18,8 @@ export const usePlayerStore = () => {
         dispatch(lastSong())
     }
 
+    const actualQueue = queue.current.slice(queue.actualItem + 1)
+
 
     return {
         // attributes
@@ -25,6 +27,7 @@ export const usePlayerStore = () => {
         play: playing.play,
         nextItemExists: queue.nextItemExists,
         lastItemExists: queue.lastItemExists,
+        actualQueue,
         //methods
         playMusic,
         nextMusic,
