@@ -59,6 +59,7 @@ export const QueuePage = () => {
     return (
         <>
             <PlayerHeading
+                active={true}
                 image={image}
                 songTitle={name}
                 songAuthor={author}
