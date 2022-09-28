@@ -40,7 +40,7 @@ export const PlayerRoutes = () => {
                         className='w-full flex flex-wrap flex-col justify-evenly items-center lg:flex-row lg:justify-center md:gap-x-7 lg:gap-x-10'
                     >
                         <div
-                            className='lg:h-full w-full flex flex-1 flex-col justify-center gap-y-5 max-w-xl'
+                            className='lg:h-full w-full flex flex-1 flex-col justify-start lg:justify-center gap-y-5 max-w-xl'
                         >
                             <Routes>
                                 <Route path='/' element={<AlbumPage />} />

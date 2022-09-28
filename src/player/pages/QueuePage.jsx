@@ -1,46 +1,8 @@
 import {useNavigate} from 'react-router-dom'
-import {motion, Reorder, useDragControls} from 'framer-motion'
+import {motion, Reorder} from 'framer-motion'
 
 import {usePlayerStore} from '../../hooks'
-import {PlayerHeading} from '../components'
-
-const QueueItem = ({item}) => {
-
-    const dragControls = useDragControls()
-    const {id, name, author, explicit, album} = item
-    const {image} = album
-
-    return (
-        <Reorder.Item
-            as='div'
-            value={item}
-            id={id}
-            dragListener={false}
-            dragControls={dragControls}
-        >
-            <PlayerHeading
-                image={image}
-                songTitle={name}
-                songAuthor={author}
-                songExplicit={explicit}
-                leftActions={
-                    <img
-                        className="rounded-md h-12 w-12"
-                        src={image}
-                        alt="album"
-                    />
-                }
-                rightActions={
-                    <i
-                        className="fa-solid fa-bars fa-xl text-white opacity-40 cursor-pointer"
-                        onPointerDown={(event) => dragControls.start(event)}
-                    >
-                    </i>
-                }
-            />
-        </Reorder.Item>
-    )
-}
+import {PlayerHeading, QueueControls, QueueItem} from '../components'
 
 export const QueuePage = () => {
 
@@ -76,7 +38,7 @@ export const QueuePage = () => {
                     </motion.div>
                 }
             />
-
+            <QueueControls />
             <Reorder.Group
                 initial={{opacity: 0}}
                 exit={{opacity: 0}}
@@ -89,7 +51,7 @@ export const QueuePage = () => {
                     reorderMusic(newOrder)
                 }}
                 values={actualQueue} axis='y'
-                className='flex flex-col gap-y-4'
+                className='flex flex-col gap-y-4 overflow-hidden'
             >
 
                 {

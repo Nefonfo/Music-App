@@ -1,13 +1,11 @@
+import {useNavigate} from 'react-router-dom'
 import {motion} from 'framer-motion'
-import Slider from "react-slick";
+import Slider from "react-slick"
 
 import {usePlayerStore} from '../../hooks'
-import {LyricRow} from '../components/LyricRow'
+import {PlayerHeading, LyricRow} from '../components'
 
 import './css/LyricsPage.css'
-import {PlayerHeading} from '../components'
-import {useNavigate} from 'react-router-dom'
-
 
 export const LyricsPage = () => {
 

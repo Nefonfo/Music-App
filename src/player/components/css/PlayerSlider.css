@@ -9,7 +9,7 @@
 }
 
 .rangeslider .rangeslider__handle {
-    background: #fff;
+    background: rgba(255, 255, 255, 1);
     cursor: pointer;
     position: absolute;
 }
@@ -23,7 +23,7 @@
 }
 .rangeslider-horizontal .rangeslider__fill {
     height: 100%;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.30);
     border-radius: 10px;
     top: 0;
 }

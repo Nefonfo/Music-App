@@ -24,6 +24,7 @@ export const usePlayerStore = () => {
     }
 
     const deleteMusic = (queueId) => {
+        console.log(queue.current.filter((song) => song.id !== queueId))
         dispatch(deleteSongFromQueue(queueId))
     }
 
@@ -38,6 +39,7 @@ export const usePlayerStore = () => {
         playMusic,
         nextMusic,
         lastMusic,
-        reorderMusic
+        reorderMusic,
+        deleteMusic
     }
 }
