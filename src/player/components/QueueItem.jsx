@@ -34,7 +34,7 @@ export const QueueItem = ({item}) => {
             as='div'
             value={item}
             id={id}
-            //dragListener={false}
+            dragListener={false}
             dragControls={dragControls}
         >
             <motion.div
@@ -71,10 +71,12 @@ export const QueueItem = ({item}) => {
                         </>
                     }
                     rightActions={
-                        <div>
+                        <div
+                            className='px-2 py-1'
+                            onPointerDown={(e) => dragControls.start(e)}
+                        >
                             <i
                                 className="fa-solid fa-bars fa-xl text-white opacity-40 cursor-pointer"
-                                onPointerDown={(e) => dragControls.start(e)}
                             >
                             </i>
                         </div>
