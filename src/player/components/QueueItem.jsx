@@ -34,7 +34,7 @@ export const QueueItem = ({item}) => {
             as='div'
             value={item}
             id={id}
-            dragListener={false}
+            //dragListener={false}
             dragControls={dragControls}
         >
             <motion.div
